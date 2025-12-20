@@ -1,9 +1,8 @@
-import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import java.io.ByteArrayOutputStream
 
 plugins {
-  kotlin("jvm") version "2.2.21"
+  kotlin("jvm") version "2.3.0"
 }
 
 repositories {
@@ -12,7 +11,7 @@ repositories {
 }
 
 dependencies {
-  fun klite(module: String) = "com.github.keksworks.klite:klite-$module:1.7.0"
+  fun klite(module: String) = "com.github.keksworks.klite:klite-$module:1.7.2"
   implementation(klite("server"))
   implementation(klite("json"))
   implementation(klite("i18n"))
@@ -27,6 +26,12 @@ dependencies {
   testImplementation("ch.tutteli.atrium:atrium-fluent:1.3.0-alpha-2")
   testImplementation("io.mockk:mockk:1.14.6")
   testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.9.0")
+}
+
+java {
+  toolchain {
+    languageVersion.set(JavaLanguageVersion.of(21))
+  }
 }
 
 sourceSets {
@@ -48,7 +53,6 @@ tasks.test {
 
 tasks.withType<KotlinCompile> {
   compilerOptions {
-    jvmTarget.set(JvmTarget.JVM_21)
     if (System.getProperty("user.name") != "root") finalizedBy("types.ts")
   }
 }
