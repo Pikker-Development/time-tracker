@@ -11,6 +11,8 @@
 </div>
 
 <style lang="postcss">
+  @reference "src/global.css";
+
   .animate-spin {
     @apply h-full;
     animation: spin 1s infinite linear;
