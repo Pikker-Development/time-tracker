@@ -16,18 +16,18 @@
     "svelte-routing": "github:Monadic-Cat/svelte-routing#c4d24dc4c4deb3d5b21f492006cf6d45a8ae4464"
   },
   "devDependencies": {
-    "@sveltejs/vite-plugin-svelte": "^5.0.3",
-    "@testing-library/svelte": "^5.2.6",
+    "@sveltejs/vite-plugin-svelte": "^6.2.1",
+    "@testing-library/svelte": "^5.2.10",
     "@tsconfig/svelte": "^5.0.4",
     "autoprefixer": "^10.4.15",
-    "jsdom": "^25.0.1",
+    "jsdom": "^27.3.0",
     "postcss": "^8.4.28",
     "postcss-load-config": "^4.0.1",
-    "svelte": "^5.39.7",
+    "svelte": "^5.46.0",
     "svelte-check": "^4.1.0",
-    "tailwindcss": "^3.4.15",
+    "tailwindcss": "^3.4.19",
     "typescript": "^5.7.2",
-    "vite": "^6.3.6",
+    "vite": "7.1.11",
     "vitest": "^3.2.4"
   },
   "browserslist": [
