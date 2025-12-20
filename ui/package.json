@@ -11,12 +11,9 @@
     "test": "vitest watch",
     "test:run": "vitest run"
   },
-  "dependencies": {
-    "@tailwindcss/forms": "^0.5.9",
-    "svelte-routing": "github:Monadic-Cat/svelte-routing#c4d24dc4c4deb3d5b21f492006cf6d45a8ae4464"
-  },
   "devDependencies": {
     "@sveltejs/vite-plugin-svelte": "^6.2.1",
+    "@tailwindcss/forms": "^0.5.9",
     "@testing-library/svelte": "^5.2.10",
     "@tsconfig/svelte": "^5.0.4",
     "autoprefixer": "^10.4.15",

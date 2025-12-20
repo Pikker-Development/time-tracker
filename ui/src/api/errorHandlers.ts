@@ -1,7 +1,7 @@
 import api from './api'
 import {resolve, t} from 'i18n'
 import {showToast, ToastType} from 'src/stores/toasts'
-import {navigate} from 'svelte-routing'
+import {navigate} from 'src/router'
 
 export function jsErrorHandler(message: Event|string, source?: string, line?: number, column?: number, error?: Error) {
   reportError({message, source, line, column}, error)

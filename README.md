@@ -6,15 +6,15 @@ This is a preconfigured sample/starter project with Kotlin/Klite with some best-
 
 * Simple src/test directory structure
 * Committed `.env` file for dev configuration
-* PostgreSQL in Docker
+* PostgreSQL in Docker Compose
 * [DB migrations](db) creating:
   * Less privileged app user
   * change_history table and triggers
 * Unit tests
 * Internationalization
 * TypeScript types generation for frontend
-* UI with Svelte/TailwindCSS - get more components from [Svelte Sample Repo](https://github.com/codeborne/svelte-sample)
+* UI with Vite/Svelte/TailwindCSS - get more components from [Svelte Sample Repo](https://github.com/codeborne/svelte-sample)
 
-Also follows [The Pure Code Manifesto](https://github.com/keksworks/manifesto) principles.
+Follows [The Pure Code Manifesto](https://github.com/keksworks/manifesto) principles.
 
 Check [Klite Tutorial](https://github.com/keksworks/klite/blob/main/TUTORIAL.md) if you want to start from scratch with Klite.
