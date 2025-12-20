@@ -4,6 +4,6 @@ build
 /.git/
 /Jenkinsfile
 /Dockerfile
-/docker-compose*
+/compose*
 README.*
 .DS_Store
