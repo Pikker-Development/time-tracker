@@ -15,4 +15,6 @@ This is a preconfigured sample/starter project with Kotlin/Klite with some best-
 * TypeScript types generation for frontend
 * UI with Svelte/TailwindCSS - get more components from [Svelte Sample Repo](https://github.com/codeborne/svelte-sample)
 
+Also follows [The Pure Code Manifesto](https://github.com/keksworks/manifesto) principles.
+
 Check [Klite Tutorial](https://github.com/keksworks/klite/blob/main/TUTORIAL.md) if you want to start from scratch with Klite.
