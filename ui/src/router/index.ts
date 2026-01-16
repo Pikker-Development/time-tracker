@@ -7,6 +7,8 @@ import {on} from 'svelte/events'
 export const activePath = writable(location.pathname)
 export const routeMatched = writable(false)
 
+activePath.subscribe(() => routeMatched.set(false))
+
 export function init() {
   return on(window, 'popstate', () => activePath.set(location.pathname))
 }
@@ -18,7 +20,6 @@ export function refreshOnNextNavigate() {
 
 export function navigate(path: string, opts = {replace: false}) {
   if (refreshNavigate) return location.href = path
-  routeMatched.set(false)
   const f = opts.replace ? history.replaceState : history.pushState
   f.call(history, {}, '', path)
   activePath.set(path)
