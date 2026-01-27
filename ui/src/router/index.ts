@@ -22,7 +22,7 @@ export function navigate(path: string, opts = {replace: false}) {
   if (refreshNavigate) return location.href = path
   const f = opts.replace ? history.replaceState : history.pushState
   f.call(history, {}, '', path)
-  activePath.set(path)
+  activePath.set(path.replace(/[?#].*/, ''))
   setTimeout(() => scrollTo({top: 0}))
 }
 
