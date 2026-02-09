@@ -2,6 +2,7 @@
 * No semicolons
 * Follow existing formatting
 * Avoid duplication - extract similar code and reuse
+* Use camelCase for fields, in DB/Entities/JSON to avoid conversions
 * Backend code is written in Kotlin using Klite framework; code must be short and concise
   * Klite guide: https://raw.githubusercontent.com/keksworks/klite/refs/heads/main/llms.txt
   * Gradle source directories are simplified (just `src` & `test`)
