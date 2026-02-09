@@ -6,8 +6,10 @@
   * Klite guide: https://raw.githubusercontent.com/keksworks/klite/refs/heads/main/llms.txt
   * Gradle source directories are simplified (just `src` & `test`)
   * In Kotlin, prefer expression body functions
-  * Repositories can extend CrudRepository; Repository tests extend DBTest and run on a real database
+  * Repositories can extend `db.CrudRepository` to avoid implementing all the basic operations
+  * Repository tests extend `db.DBTest` and run on a real database
   * Other tests are pure unit tests
+  * `expect(subject).toEqual(expected)`
   * In tests, prefer using pre-created entities from `test/db/TestData.kt`; modify only needed fields using .copy()
   * In expectations, also prefer using .copy() and full equality checks instead of field-by-field
   * Always add tests for new backend functions
