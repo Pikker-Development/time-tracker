@@ -11,10 +11,12 @@
   * Other tests are pure unit tests
   * `expect(subject).toEqual(expected)`
   * In tests, prefer using pre-created entities from `test/db/TestData.kt`; modify only needed fields using .copy()
+  * Every new entity should also be added to TestData for reuse in tests
   * In expectations, also prefer using .copy() and full equality checks instead of field-by-field
   * Always add tests for new backend functions
   * Route handlers are in app module and should be registered in src/app/ApiRoutes.kt
-  * For route/service layers tests, extend test/db/BaseMocks.kt to avoid duplicating mock creation and basic setup
+  * For route/service layers tests, extend `test/db/BaseMocks.kt` to avoid duplicating mock creation and basic setup
+  * If there are new repositories/services, ass them to BaseMocks for reuse
   * PostgreSQL database changesets are in `db` directory following file per table structure
 * Frontend is in `ui` directory and written using Svelte+TypeScript with TailwindCSS
   * Prefer Svelte 4 syntax (without runes), use event handlers without colons
