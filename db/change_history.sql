@@ -33,21 +33,20 @@ end; $$
 --changeset add_change_history onChange:RUN separator:none
 create or replace function add_change_history() returns trigger language plpgsql as $$
 declare
-  col name;
+  col text;
   oldValue text;
   newValue text;
+  newRec jsonb := to_jsonb(new);
+  oldRec jsonb := to_jsonb(old);
 begin
-  for col in (
-    select attname from pg_catalog.pg_attribute a
-      join pg_catalog.pg_class c on c.oid = a.attrelid and c.relname = tg_table_name
-      join pg_catalog.pg_namespace n on n.oid = c.relnamespace and n.nspname = tg_table_schema
-    where a.attnum > 0 and not a.attisdropped)
-    loop
-      execute format('select (($1).%I)::text', col) using new into newValue;
-      execute format('select (($1).%I)::text', col) using old into oldValue;
-      if (oldValue is not distinct from newValue) then continue; end if;
-
-      insert into change_history ("table", rowId, "column", oldValue, newValue, changedBy) values (tg_table_name, new.id, col, oldValue, newValue, get_app_user());
+  for col, newValue in select * from jsonb_each_text(newRec) loop
+      if (col not in ('updatedat', 'id')) then
+        oldValue := oldRec->>col;
+        if (oldValue is distinct from newValue) then
+          insert into change_history ("table", rowId, "column", oldValue, newValue, changedBy)
+          values (tg_table_name, new.id, col, oldValue, newValue, get_app_user());
+        end if;
+      end if;
     end loop;
   return new;
 end; $$
