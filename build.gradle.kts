@@ -24,13 +24,13 @@ dependencies {
   testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.13.4")
   testRuntimeOnly("org.junit.platform:junit-platform-launcher:1.13.4")
   testImplementation("ch.tutteli.atrium:atrium-fluent:1.3.0-alpha-2")
-  testImplementation("io.mockk:mockk:1.14.6")
+  testImplementation("io.mockk:mockk:1.14.9")
   testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.9.0")
 }
 
 java {
   toolchain {
-    languageVersion.set(JavaLanguageVersion.of(21))
+    languageVersion.set(JavaLanguageVersion.of(25))
   }
 }
 
