@@ -1,5 +1,7 @@
 <script lang="ts">
   import Avatar from 'src/layout/Avatar.svelte'
+
+  import {t} from 'i18n'
 </script>
 
 <header class="bg-stone-50 border-b px-2 sm:px-3 py-3 flex flex-wrap gap-3 justify-between items-center">
