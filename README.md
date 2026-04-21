@@ -1,20 +1,20 @@
-# Klite starter project
+# Time Tracker
 
-**Don't forget to update this file with your own project description.**
+A simpler, less cluttered and more opinionated time management system - an alternative to [Kimai](https://www.kimai.org/) etc.
 
-This is a preconfigured sample/starter project with Kotlin/Klite with some best-practices:
+## Technical stack
 
-* Simple src/test directory structure
-* Committed `.env` file for dev configuration
-* PostgreSQL in Docker Compose
-* [DB migrations](db) creating:
-  * Less privileged app user
-  * change_history table and triggers
-* Unit tests
-* Internationalization
-* TypeScript types generation for frontend
-* UI with Vite/Svelte/TailwindCSS - get more components from [Svelte Sample Repo](https://github.com/codeborne/svelte-sample)
+Built with:
+* [Database](db): PostgreSQL
+* [Backend](src): Kotlin/Klite
+* [Unit tests](test): JUnit
+* [Frontend](ui): Svelte/TailwindCSS/TypeScript, including:
+  * Internationalization
+  * TypeScript types generation
+  * Unit tests
+* [Development config](.env)
 
-Follows [The Pure Code Manifesto](https://github.com/keksworks/manifesto) principles.
-
-Check [Klite Tutorial](https://github.com/keksworks/klite/blob/main/TUTORIAL.md) if you want to start from scratch with Klite.
+Prerequisites (install these first):
+* JDK 25+
+* Node 24+
+* Docker
