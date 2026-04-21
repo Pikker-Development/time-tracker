@@ -22,12 +22,12 @@ fun main() {
   ).apply {
     initDB()
 
-    register(httpClient())
 
     assets("/", AssetsHandler(Path.of("ui/public"), useIndexForUnknownPaths = true))
 
     context("/oauth") {
       register<OAuthUserProvider>(AuthUserProvider::class)
+      register(httpClient())
       register<GoogleOAuthClient>()
       annotated<OAuthRoutes>()
     }
