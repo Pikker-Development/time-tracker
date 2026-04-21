@@ -2,6 +2,10 @@
 @plugin '@tailwindcss/forms';
 
 @layer base {
+  .link-button {
+    @apply px-4 py-2 flex items-center
+  }
+
   img, svg {
     display: inline-block;
   }
