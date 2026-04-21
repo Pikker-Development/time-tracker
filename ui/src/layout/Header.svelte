@@ -11,9 +11,9 @@
     {/if}
   </div>
   <div>
-    <a href="/oauth?redirect=/">
+    <a href="/oauth?redirect=/" class="link-button gap-2">
       {t.login}
-      <img src="/public/image/google.svg" class="h-4 w-4" title="Google Login" alt="">
+      <img src="/public/img/google.svg" class="h-4 w-4" title="Google Login" alt="">
     </a>
   </div>
 </header>
