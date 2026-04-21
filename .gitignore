@@ -1,4 +1,7 @@
 .gradle/
 build/
-node_modules/
+logs/
 .DS_Store
+/attachments
+/logs
+/.env.prod
