@@ -1,7 +1,7 @@
 <script lang="ts">
   import {t} from 'i18n'
+  import MainPageLayout from 'src/layout/MainPageLayout.svelte'
 </script>
 
-<main class="text-center pt-10">
-  <h1>{t.title}</h1>
-</main>
+<MainPageLayout title={t.title}>
+</MainPageLayout>
