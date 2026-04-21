@@ -4,6 +4,7 @@ import db.TestData.user
 import io.mockk.clearAllMocks
 import io.mockk.every
 import io.mockk.mockk
+import klite.Config
 import klite.DependencyInjectingRegistry
 import klite.HttpExchange
 import klite.StatusCode.Companion.Found
@@ -13,6 +14,10 @@ import java.net.URI
 
 abstract class BaseMocks {
   companion object {
+    init {
+      Config.useEnvFile()
+    }
+
     val registry = DependencyInjectingRegistry()
     val exchange = mockk<HttpExchange>(relaxed = true)
 
@@ -34,6 +39,7 @@ abstract class BaseMocks {
 
     userRepository.apply {
       every { get(user.id) } returns user
+      every { save(any()) } returns 1
     }
   }
 }

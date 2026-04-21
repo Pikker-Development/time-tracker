@@ -17,6 +17,7 @@ dependencies {
   implementation(klite("i18n"))
   implementation(klite("jdbc"))
   implementation(klite("slf4j"))
+  implementation(klite("oauth"))
   implementation("org.postgresql:postgresql:42.7.8")
 
   testImplementation(klite("jdbc-test"))

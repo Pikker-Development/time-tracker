@@ -6,7 +6,9 @@ export interface Todo {completedAt?: Instant; id: Id<Todo>; item: string}
 // class users.Role
 export enum Role {ADMIN = 'ADMIN', USER = 'USER'}
 // class users.User
-export interface User {firstName: string; id: Id<User>; lastName: string; role: Role}
+export interface User {email: Email; firstName: string; id: Id<User>; lastName: string; role: Role}
 
 // java.time.Instant
 export type Instant = `${number}-${number}-${number}T${number}:${number}:${number}Z`
+// klite.Email
+export type Email = `${string}@${string}`
