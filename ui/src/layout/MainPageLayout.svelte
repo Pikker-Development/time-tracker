@@ -15,7 +15,7 @@
   <Header {title}>
     <slot name="header"/>
   </Header>
-  <div class="h-full px-2 sm:px-3 flex-grow bg-stone-100">
+  <main class="h-full px-2 sm:px-3 flex-grow bg-stone-100">
     <slot/>
-  </div>
+  </main>
 </div>
