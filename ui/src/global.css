@@ -29,6 +29,11 @@
 }
 
 @theme {
+  --color-pikker-gold: #D7A262;
+  --color-pikker-primary: #1c1e2b;
+  --color-pikker-secondary: #1e293b;
+  --color-pikker-tertiary: #7499ac;
+
   --color-success-50: #ecfdf5;
   --color-success-100: #d1fae5;
   --color-success-200: #a7f3d0;
