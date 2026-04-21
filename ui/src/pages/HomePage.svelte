@@ -4,4 +4,6 @@
 
 <main class="text-center pt-10">
   <h1>{t.title}</h1>
+  <a href="/oauth?redirect=/">Google</a>
 </main>
+
