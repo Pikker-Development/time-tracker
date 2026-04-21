@@ -6,13 +6,11 @@
 </script>
 
 <svelte:head>
-  {#if title}
-    <title>{t.title} - {title}</title>
-  {/if}
+  <title>{t.title}{title ? " - " + title : ""}</title>
 </svelte:head>
 
 <div class="min-h-screen flex flex-col">
-  <Header {title}>
+  <Header>
     <slot name="header"/>
   </Header>
   <main class="h-full px-2 sm:px-3 grow bg-stone-100">
