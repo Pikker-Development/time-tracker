@@ -1,4 +1,6 @@
 <script lang="ts">
+  import Avatar from 'src/layout/Avatar.svelte'
+
   import {t} from 'i18n'
 </script>
 
@@ -9,10 +11,5 @@
       <h1 class="font-bold text-2xl">{t.title}</h1>
     </div>
   </div>
-  <div>
-    <a href="/oauth?redirect=/" class="link-button gap-2">
-      {t.login}
-      <img src="/public/img/google.svg" class="size-4" title="Google Login" alt="">
-    </a>
-  </div>
+  <Avatar />
 </header>

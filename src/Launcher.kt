@@ -1,10 +1,12 @@
 import auth.AccessChecker
 import auth.AuthUserProvider
+import auth.Public
 import db.initDB
 import klite.*
 import klite.annotations.annotated
 import klite.http.httpClient
 import klite.json.JsonBody
+import klite.oauth.AuthRoutes
 import todos.TodoRoutes
 import java.nio.file.Path
 import kotlin.reflect.full.primaryConstructor
@@ -17,7 +19,15 @@ fun main() {
   if (!Config.isProd) Config.useEnvFile()
 
   Server(
-    sessionStore = CookieSessionStore(cookie = Cookie("S", "", httpOnly = true, secure = Config.isProd, maxAge = 365.days)),
+    sessionStore = CookieSessionStore(
+      cookie = Cookie(
+        "S",
+        "",
+        httpOnly = true,
+        secure = Config.isProd,
+        maxAge = 365.days
+      )
+    ),
     httpExchangeCreator = XForwardedHttpExchange::class.primaryConstructor!!
   ).apply {
     initDB()
@@ -40,6 +50,7 @@ fun main() {
       before<AccessChecker>()
 
       annotated<TodoRoutes>("/todos")
+      annotated<AuthRoutes>(annotations = listOf(Public()))
     }
     start()
   }

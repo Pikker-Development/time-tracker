@@ -3,9 +3,16 @@ import './extensions/ArrayExtensions'
 import './global.css'
 import App from './App.svelte'
 import {initErrorHandlers} from 'src/api/errorHandlers'
+import {initSession} from 'src/stores/auth'
+import type {User} from 'src/api/types'
+import api from 'src/api/api'
 
-initErrorHandlers()
+(async function() {
+  initErrorHandlers()
 
-const app = mount(App, {
-  target: document.getElementById('app')!,
-})
+  const [auth] = await Promise.all([api.get('user').catch(() => null)])
+  if (auth) initSession(auth as User)
+
+  document.body.innerHTML = ''
+  mount(App, {target: document.body})
+}())
