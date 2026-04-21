@@ -1,5 +1,5 @@
 <script lang="ts">
-  import {t} from 'i18n'
+  import Avatar from 'src/layout/Avatar.svelte'
 
   export let title = ''
 </script>
@@ -13,10 +13,5 @@
       </div>
     {/if}
   </div>
-  <div>
-    <a href="/oauth?redirect=/" class="link-button gap-2">
-      {t.login}
-      <img src="/public/img/google.svg" class="size-4" title="Google Login" alt="">
-    </a>
-  </div>
+  <Avatar />
 </header>

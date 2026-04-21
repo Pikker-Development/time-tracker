@@ -3,6 +3,11 @@
   "errors": {
     "technical": "Technical error, please try again"
   },
-  "contacts": { "email": "Email" },
-  "login": "Google login"
+  "contacts": {
+    "email": "Email"
+  },
+  "login": {
+    "googleLogin": "Google login",
+    "logout": "Logout"
+  }
 }
