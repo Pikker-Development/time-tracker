@@ -23,7 +23,7 @@ fun main() {
     initDB()
 
 
-    assets("/", AssetsHandler(Path.of("ui/public"), useIndexForUnknownPaths = true))
+    assets("/", AssetsHandler(Path.of("ui/build"), useIndexForUnknownPaths = true))
 
     context("/oauth") {
       register<OAuthUserProvider>(AuthUserProvider::class)
