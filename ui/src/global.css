@@ -3,7 +3,7 @@
 
 @layer base {
   .link-button {
-    @apply px-4 py-2 flex items-center
+    @apply px-4 py-2 flex items-center rounded-md transition-all duration-200 text-gray-600 hover:text-black bg-gray-100 ring ring-gray-400
   }
 
   img, svg {
@@ -20,6 +20,9 @@
 
   a {
     cursor: pointer;
+  }
+
+  .text-link {
     @apply text-primary-600 hover:text-primary-700;
   }
 
