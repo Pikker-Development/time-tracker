@@ -11,6 +11,9 @@
 
 <Toasts/>
 
+<slot/>
+
 <Router>
  <Route path="/" component={HomePage}/>
 </Router>
+

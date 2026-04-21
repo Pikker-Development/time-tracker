@@ -2,5 +2,7 @@
   "title": "Time tracker",
   "errors": {
     "technical": "Technical error, please try again"
-  }
+  },
+  "contacts": { "email": "Email" },
+  "login": "Google login"
 }
