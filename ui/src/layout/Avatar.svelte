@@ -19,7 +19,7 @@
     </svelte:fragment>
   </Dropdown>
 {:else}
-  <a href="/oauth?redirect=/" class="link-button gap-2">
+  <a href="/oauth" class="link-button gap-2">
     {t.login.googleLogin}
     <img src="/public/img/google.svg" class="size-4" title="Google Login" alt="">
   </a>
