@@ -9,8 +9,8 @@ data class Project(
   override val id: Id<Project> = Id(),
   val customerId: Id<Customer>,
   val name: String,
-  val description: String?,
+  val description: String? = null,
   val currency: String = "EUR",
   val hourlyRate: BigDecimal,
-  val storyTrackerId: Int?,
+  val storyTrackerId: Int? = null,
 ): Entity<Project>
