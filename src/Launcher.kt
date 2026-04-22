@@ -1,6 +1,7 @@
 import auth.AccessChecker
 import auth.AuthUserProvider
 import auth.Public
+import customers.CustomerRoutes
 import db.initDB
 import klite.*
 import klite.annotations.annotated
@@ -50,6 +51,7 @@ fun main() {
       before<AccessChecker>()
 
       annotated<TodoRoutes>("/todos")
+      annotated<CustomerRoutes>()
       annotated<AuthRoutes>(annotations = listOf(Public()))
     }
     start()

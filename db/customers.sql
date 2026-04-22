@@ -3,7 +3,7 @@ create table customers(
   ${id},
   name text not null,
   legalName text,
-  BusinessRegistryCode text,
+  businessRegistryCode text,
   vatId text,
   invoiceEmail text,
   phone text

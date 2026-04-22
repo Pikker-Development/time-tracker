@@ -1,5 +1,6 @@
 package project
 
+import customers.Customer
 import db.Entity
 import db.Id
 import java.math.BigDecimal
