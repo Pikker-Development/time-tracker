@@ -4,6 +4,7 @@
   import {Route, Router} from 'src/router'
   import HomePage from 'src/pages/HomePage.svelte'
   import CustomersPage from 'src/pages/customers/CustomersPage.svelte'
+  import ProjectsPage from 'src/pages/projects/ProjectsPage.svelte'
 </script>
 
 <svelte:head>
@@ -17,5 +18,6 @@
 <Router>
  <Route path="/" component={HomePage}/>
   <Route path="/customers" component={CustomersPage}/>
+  <Route path="/projects" component={ProjectsPage}/>
 </Router>
 

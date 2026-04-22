@@ -1,5 +1,6 @@
 package db
 
+import customers.CustomerRepository
 import db.TestData.user
 import io.mockk.clearAllMocks
 import io.mockk.every
@@ -9,6 +10,7 @@ import klite.DependencyInjectingRegistry
 import klite.HttpExchange
 import klite.StatusCode.Companion.Found
 import klite.StatusCodeException
+import project.ProjectRepository
 import users.UserRepository
 import java.net.URI
 
@@ -22,6 +24,8 @@ abstract class BaseMocks {
     val exchange = mockk<HttpExchange>(relaxed = true)
 
     val userRepository = mock<UserRepository>()
+    val customerRepository = mock<CustomerRepository>(relaxed = true)
+    val projectRepository = mock<ProjectRepository>(relaxed = true)
 
     inline fun <reified T: Any> create() = registry.create(T::class)
 

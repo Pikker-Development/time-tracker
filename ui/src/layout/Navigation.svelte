@@ -4,4 +4,5 @@
 
 {#if $user}
   <a href="/customers">Customers</a>
+  <a href="/projects">Projects</a>
 {/if}

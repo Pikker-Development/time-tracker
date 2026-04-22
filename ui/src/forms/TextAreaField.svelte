@@ -23,7 +23,7 @@
   }
 </script>
 
-<FormField {label} let:id>
+<FormField {label} {required} let:id >
   <div class="float-right text-sm -mt-6" class:text-red-500={tooLong}>
     {#if inBytes}
       <span title="bytes">{encoder.encode(value).length ?? 0} / {maxlength}</span>

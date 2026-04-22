@@ -15,6 +15,7 @@ import kotlin.time.Duration.Companion.days
 import klite.oauth.GoogleOAuthClient
 import klite.oauth.OAuthRoutes
 import klite.oauth.OAuthUserProvider
+import project.ProjectRoutes
 
 fun main() {
   if (!Config.isProd) Config.useEnvFile()
@@ -50,6 +51,7 @@ fun main() {
 
       before<AccessChecker>()
 
+      annotated<ProjectRoutes>("/projects")
       annotated<TodoRoutes>("/todos")
       annotated<CustomerRoutes>("/customers")
       annotated<AuthRoutes>(annotations = listOf(Public()))
