@@ -51,7 +51,7 @@ fun main() {
       before<AccessChecker>()
 
       annotated<TodoRoutes>("/todos")
-      annotated<CustomerRoutes>()
+      annotated<CustomerRoutes>("/customers")
       annotated<AuthRoutes>(annotations = listOf(Public()))
     }
     start()

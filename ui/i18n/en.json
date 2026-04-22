@@ -1,8 +1,14 @@
 {
   "title": "Time tracker",
+  "general": {
+    "close": "Close",
+    "optional": "Optional",
+    "saved": "saved",
+    "save": "save"
+  },
   "errors": {
     "technical": "Technical error, please try again",
-    "tooLong": "Text is too long"
+    "tooLong": "Too long"
   },
   "contacts": {
     "email": "Email"
@@ -11,8 +17,16 @@
     "googleLogin": "Google login",
     "logout": "Logout"
   },
-  "general": {
-    "optional": "Optional"
-  }
+  "customers": {
+    "customers": "Customers",
+    "customer": "Customer",
+    "addCustomer": "Add a Customer",
+    "name": "Customer name",
+    "legalName": "Customer legal name",
+    "vatId": "Vat id",
+    "email": "Email",
+    "phone": "Phone number"
 
+  },
+  "projects": "Projects"
 }
