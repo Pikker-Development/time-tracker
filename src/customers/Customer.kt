@@ -8,9 +8,9 @@ import klite.Phone
 data class Customer(
   override val id: Id<Customer> = Id(),
   val name: String,
-  val legalName: String = "",
-  val businessRegistryCode: String = "",
-  val vaiId: String ="",
-  val invoiceEmail: Email,
-  val phone: Phone
+  val legalName: String? = null,
+  val businessRegistryCode: String? = null,
+  val vaiId: String? = null,
+  val invoiceEmail: Email? = null,
+  val phone: Phone? = null
 ): Entity<Customer>
