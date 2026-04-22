@@ -10,7 +10,7 @@ data class Customer(
   val name: String,
   val legalName: String? = null,
   val businessRegistryCode: String? = null,
-  val vaiId: String? = null,
+  val vatId: String? = null,
   val invoiceEmail: Email? = null,
   val phone: Phone? = null
 ): Entity<Customer>
