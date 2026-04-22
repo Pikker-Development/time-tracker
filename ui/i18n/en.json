@@ -1,7 +1,8 @@
 {
   "title": "Time tracker",
   "errors": {
-    "technical": "Technical error, please try again"
+    "technical": "Technical error, please try again",
+    "tooLong": "Text is too long"
   },
   "contacts": {
     "email": "Email"
@@ -9,5 +10,9 @@
   "login": {
     "googleLogin": "Google login",
     "logout": "Logout"
+  },
+  "general": {
+    "optional": "Optional"
   }
+
 }
