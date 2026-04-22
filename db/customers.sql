@@ -3,9 +3,9 @@ create table customers(
   ${id},
   name text not null,
   legalName text,
-  BusinessRegistryCode,
-  vatId int,
+  BusinessRegistryCode text,
+  vatId text,
   invoiceEmail text,
-  phone int
+  phone text
 );
 
