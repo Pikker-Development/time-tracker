@@ -21,6 +21,6 @@
 {:else}
   <a href="/oauth" class="link-button gap-2">
     {t.login.googleLogin}
-    <img src="/public/img/google.svg" class="size-4" title="Google Login" alt="">
+    <img src="/img/google.svg" class="size-4" title="Google Login" alt="">
   </a>
 {/if}

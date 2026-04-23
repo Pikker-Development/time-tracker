@@ -9,7 +9,7 @@
   <a href="/">
     <div class="flex gap-2.5 items-center">
       <div class="flex gap-2 items-center">
-        <img src="/public/favicon.svg" class="size-10" title="Time Tracker Logo" alt="Logo">
+        <img src="/favicon.svg" class="size-10" title="Time Tracker Logo" alt="Logo">
         <h1 class="font-bold text-2xl">{t.title}</h1>
       </div>
     </div>
