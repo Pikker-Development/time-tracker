@@ -4,7 +4,8 @@
     "close": "Close",
     "optional": "Optional",
     "saved": "saved",
-    "save": "save"
+    "save": "save",
+    "noItems": "no items"
   },
   "errors": {
     "technical": "Technical error, please try again",
@@ -23,8 +24,11 @@
     "addCustomer": "Add a Customer",
     "name": "Customer name",
     "legalName": "Customer legal name",
+    "businessRegistryCode": "Business registry code",
+    "legalAddress": "Legal address",
     "vatId": "Vat id",
     "email": "Email",
+    "invoiceEmail": "Invoice Email",
     "phone": "Phone number"
   },
   "projects": {
