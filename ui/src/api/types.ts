@@ -8,10 +8,12 @@ export interface Project {currency: string; customerId: Id<Customer>; descriptio
 // class users.Role
 export enum Role {ADMIN = 'ADMIN', USER = 'USER'}
 // class users.User
-export interface User {createdAt: Instant; email: Email; firstName: string; id: Id<User>; lastName: string; role: Role; updatedAt?: Instant}
+export interface User {avatarUrl?: URI; createdAt: Instant; email: Email; firstName: string; id: Id<User>; lastName: string; role: Role; updatedAt?: Instant}
 
 // java.time.Instant
 export type Instant = `${number}-${number}-${number}T${number}:${number}:${number}Z`
+// java.net.URI
+export type URI = `${string}://${string}`
 // klite.Email
 export type Email = `${string}@${string}`
 // klite.Phone

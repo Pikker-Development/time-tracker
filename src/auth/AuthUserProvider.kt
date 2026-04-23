@@ -19,7 +19,7 @@ class AuthUserProvider(
     var user = userRepository.by(User::email to profile.email)
     if (user == null) {
       val isAdmin = profile.email.domain == ownDomain
-      user = User( profile.firstName, profile.lastName, profile.email, if(isAdmin) Role.ADMIN else Role.USER)
+      user = User(profile.firstName, profile.lastName, profile.email, if (isAdmin) Role.ADMIN else Role.USER, profile.avatarUrl)
       userRepository.save(user)
     } else {
       userRepository.save(user)

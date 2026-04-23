@@ -12,3 +12,6 @@ alter table users add column createdAt timestamptz not null default now();
 
 --changeset users:updatedAt
 alter table users add column updatedAt timestamptz not null default now();
+
+--changeset users:avatarUrl
+alter table users add column avatarUrl text default null;
