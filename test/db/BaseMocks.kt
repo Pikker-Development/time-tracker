@@ -23,7 +23,7 @@ abstract class BaseMocks {
     val registry = DependencyInjectingRegistry()
     val exchange = mockk<HttpExchange>(relaxed = true)
 
-    val userRepository = mock<UserRepository>()
+    val userRepository = mock<UserRepository>(relaxed = true)
     val customerRepository = mock<CustomerRepository>(relaxed = true)
     val projectRepository = mock<ProjectRepository>(relaxed = true)
 
