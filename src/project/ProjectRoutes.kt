@@ -1,6 +1,7 @@
 package project
 
 import auth.Access
+import klite.annotations.GET
 import users.Role.ADMIN
 import klite.annotations.POST
 
@@ -12,4 +13,7 @@ class ProjectRoutes(
     projectRepository.save(project)
     return project
   }
+
+  @GET fun list() = projectRepository.list()
+
 }
