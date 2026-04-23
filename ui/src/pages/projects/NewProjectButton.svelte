@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type {Project} from 'src/api/types'
+  import type {Customer, Project} from 'src/api/types'
   import Modal from 'src/components/Modal.svelte'
   import {t} from 'i18n'
   import Button from 'src/components/Button.svelte'
@@ -9,8 +9,11 @@
   import api from 'src/api/api'
   import {showToast} from 'src/stores/toasts'
   import {navigate} from '@keksworks/svelte-tiny-router'
+  import SelectField from 'src/forms/SelectField.svelte'
+  import {onMount} from 'svelte'
 
   export let project = {} as Project
+  export let customers = {} as Customer
   export let label = t.projects.new
   export let show = false
 
@@ -20,11 +23,16 @@
     show = false
     setTimeout(() => navigate(`/projects/${project.id}`), 500)
   }
+
+  onMount(
+    async () => customers = await api.get('customers')
+  )
 </script>
 
 <Button {label} onclick={() => show = true}/>
 <Modal bind:show title={label}>
   <Form {submit}>
+    <SelectField label={t.customers.customers} bind:value={project.customerId} options={Object.values(customers).map(c => [c.id, c.name]).toObject()}/>
     <FormField label={t.projects.name} bind:value={project.name}/>
     <TextAreaField label={t.projects.description} bind:value={project.description} rows={3} required={false}/>
     <FormField label={t.projects.hourlyRate} bind:value={project.hourlyRate}/>
