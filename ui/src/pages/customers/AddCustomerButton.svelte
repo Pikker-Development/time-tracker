@@ -24,6 +24,8 @@
   <Form class="flex flex-col gap-2" {submit}>
     <FormField label={t.customers.name} bind:value={customer.name}/>
     <FormField required={false} label={t.customers.legalName} bind:value={customer.legalName}/>
+    <FormField required={false} label={t.customers.businessRegistryCode} bind:value={customer.businessRegistryCode}/>
+    <FormField required={false} label={t.customers.legalAddress} bind:value={customer.legalAddress}/>
     <FormField required={false} label={t.customers.vatId} bind:value={customer.vatId}/>
     <FormField required={false} label={t.customers.email} bind:value={customer.invoiceEmail}/>
     <FormField required={false} label={t.customers.phone} bind:value={customer.phone}/>

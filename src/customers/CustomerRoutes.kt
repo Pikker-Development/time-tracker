@@ -1,7 +1,6 @@
 package customers
 
 import auth.Access
-import klite.annotations.GET
 import klite.annotations.POST
 import users.Role.ADMIN
 
