@@ -1,0 +1,25 @@
+services:
+  app:
+    image: time-tracker-app
+    environment:
+      - ENV=prod
+      - NUM_WORKERS
+      - SESSION_SECRET
+      - DB_USER
+      - DB_PASS
+      - DB_APP_PASS
+      - OWN_DOMAIN
+      - GOOGLE_OAUTH_CLIENT_ID
+      - GOOGLE_OAUTH_CLIENT_SECRET
+    networks:
+      - proxy
+      - default
+    labels:
+      - caddy=time.pikker.dev
+      - caddy.reverse_proxy={{upstreams 3000}}
+      - caddy.reverse_proxy.lb_retries=10
+      - caddy.reverse_proxy.lb_try_interval=500ms
+
+networks:
+  proxy:
+    external: true
