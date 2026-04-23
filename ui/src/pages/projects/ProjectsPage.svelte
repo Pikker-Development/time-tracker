@@ -7,7 +7,6 @@ import api from 'src/api/api'
 import {t} from 'i18n'
 
 let projects: Project[]
-let customers = {} as Customer
 
 onMount(async () => {
   projects = await api.get('projects')
