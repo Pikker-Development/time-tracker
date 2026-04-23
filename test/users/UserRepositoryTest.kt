@@ -11,6 +11,7 @@ class UserRepositoryTest: DBTest() {
   val repository = UserRepository(db)
 
   @Test fun `save & load`() {
+    repository.save(user)
     expect(repository.get(user.id)).toEqual(user)
     expect(repository.list()).toContain(user)
   }
