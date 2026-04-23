@@ -8,14 +8,13 @@ import klite.annotations.annotated
 import klite.http.httpClient
 import klite.json.JsonBody
 import klite.oauth.AuthRoutes
-import todos.TodoRoutes
-import java.nio.file.Path
-import kotlin.reflect.full.primaryConstructor
-import kotlin.time.Duration.Companion.days
 import klite.oauth.GoogleOAuthClient
 import klite.oauth.OAuthRoutes
 import klite.oauth.OAuthUserProvider
 import project.ProjectRoutes
+import java.nio.file.Path
+import kotlin.reflect.full.primaryConstructor
+import kotlin.time.Duration.Companion.days
 
 fun main() {
   if (!Config.isProd) Config.useEnvFile()
@@ -52,7 +51,6 @@ fun main() {
       before<AccessChecker>()
 
       annotated<ProjectRoutes>("/projects")
-      annotated<TodoRoutes>("/todos")
       annotated<CustomerRoutes>("/customers")
       annotated<AuthRoutes>(annotations = listOf(Public()))
     }
