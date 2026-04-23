@@ -10,3 +10,5 @@ create table customers(
   phone text
 );
 
+--changeset customers:createdAt
+alter table customers add column createdAt timestamptz not null default now();
