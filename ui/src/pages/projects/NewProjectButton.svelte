@@ -20,7 +20,6 @@
     show = false
     setTimeout(() => navigate(`/projects/${project.id}`), 500)
   }
-
 </script>
 
 <Button {label} onclick={() => show = true}/>
@@ -30,8 +29,7 @@
     <TextAreaField label={t.projects.description} bind:value={project.description} rows={3} required={false}/>
     <FormField label={t.projects.hourlyRate} bind:value={project.hourlyRate}/>
     <FormField label={t.projects.storyTrackerId} bind:value={project.storyTrackerId} required={false}/>
-
-    <div class="flex justify-end items-center pb-2 -mt-2">
+    <div class="flex justify-end items-center pb-2 mt-4">
       <Button type="submit" label={t.general.save} class="primary" />
     </div>
   </Form>
