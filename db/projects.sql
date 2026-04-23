@@ -12,3 +12,5 @@ create table projects(
 --changeset projects.audit
 create trigger projects_history after update on projects for each row execute function add_change_history();
 
+--changeset projects:createdAt
+alter table projects add column createdAt timestamptz not null default now();
