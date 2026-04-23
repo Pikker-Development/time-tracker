@@ -16,7 +16,7 @@ services:
       - default
     labels:
       - caddy=time.pikker.dev
-      - caddy.reverse_proxy={{upstreams 3000}}
+      - caddy.reverse_proxy={{upstreams 8080}}
       - caddy.reverse_proxy.lb_retries=10
       - caddy.reverse_proxy.lb_try_interval=500ms
 
