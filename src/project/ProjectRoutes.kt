@@ -9,7 +9,6 @@ class ProjectRoutes(
   val projectRepository: ProjectRepository) {
 
   @POST fun save(project: Project) : Project {
-    val project = project.copy()
     projectRepository.save(project)
     return project
   }
