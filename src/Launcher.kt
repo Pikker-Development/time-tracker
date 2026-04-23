@@ -34,7 +34,13 @@ fun main() {
     initDB()
 
 
-    assets("/", AssetsHandler(Path.of("ui/public"), useIndexForUnknownPaths = true))
+    var path: Path
+    if (!Config.isProd) {
+      path = Path.of("ui/build")
+    } else {
+      path = Path.of("ui/public")
+    }
+    assets("/", AssetsHandler(path, useIndexForUnknownPaths = true))
 
     context("/oauth") {
       register<OAuthUserProvider>(AuthUserProvider::class)
