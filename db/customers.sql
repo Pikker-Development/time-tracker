@@ -1,7 +1,7 @@
 --changeset customers
 create table customers(
   ${id},
-  name text not null,
+  name text unique not null,
   legalName text,
   businessRegistryCode text,
   legalAddress text,
