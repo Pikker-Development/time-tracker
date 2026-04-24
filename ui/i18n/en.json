@@ -37,6 +37,7 @@
     "description": "Description",
     "hourlyRate": "Hourly rate",
     "storyTrackerId": "Story tracker id",
-    "currency": "Currency"
+    "currency": "Currency",
+    "edit": "Edit project"
   }
 }
