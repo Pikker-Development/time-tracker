@@ -8,10 +8,11 @@
   import Modal from 'src/components/Modal.svelte'
   import Form from 'src/forms/Form.svelte'
   import FormField from 'src/forms/FormField.svelte'
-  import Icon from 'src/icons/Icon.svelte'
 
   export let customer = {} as Customer
   export let show = false
+  export let title = t.customers.addCustomer
+
   let open = false
   export let onCreated: (customer: Customer) => void = () => {}
 
@@ -21,17 +22,17 @@
     onCreated(customer)
     show = false
   }
-
 </script>
 
-<Button label={t.customers.addCustomer} onclick={() => show = true}/>
-<Modal bind:show title={t.customers.addCustomer}>
+<Modal bind:show title={title}>
   <Form class="flex flex-col gap-2" {submit}>
     <div class="sm:flex flex-1 items-end gap-x-2 gap-y-0.5 py-2" >
       <FormField class="flex-1" label={t.customers.name} bind:value={customer.name}/>
-      <Button  icon={open ? 'chevron-up' : 'chevron-down'} onclick={() => open = !open}/>
+      {#if !customer.id}
+        <Button  icon={open ? 'chevron-up' : 'chevron-down'} onclick={() => open = !open}/>
+      {/if}
     </div>
-    {#if open}
+    {#if open || customer.id}
       <div transition:slide>
         <FormField required={false} label={t.customers.legalName} bind:value={customer.legalName}/>
         <FormField required={false} label={t.customers.businessRegistryCode} bind:value={customer.businessRegistryCode}/>
@@ -40,10 +41,12 @@
         <FormField required={false} label={t.customers.email} bind:value={customer.invoiceEmail}/>
         <FormField required={false} label={t.customers.phone} bind:value={customer.phone}/>
       </div>
-      {/if}
+    {/if}
     <div>
       <Button type="submit" label={t.general.save}></Button>
+      {#if customer.id}
+        <Button type="button" icon="trash" color="danger" />
+      {/if}
     </div>
   </Form>
 </Modal>
-
