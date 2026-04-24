@@ -18,6 +18,10 @@
   ]
   let customers: Customer[]
 
+  function customerAdded(newCustomer: Customer) {
+    customers = [...customers, newCustomer]
+  }
+
   onMount(
     async () => customers = await api.get('customers')
   )
@@ -25,7 +29,7 @@
 
 <MainPageLayout class="relative flex flex-col gap-4">
   <div class="flex justify-end">
-    <AddCustomerButton/>
+    <AddCustomerButton onCreated = {customerAdded}/>
   </div>
   <SortableTable {columns} items={customers}/>
 </MainPageLayout>
