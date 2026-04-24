@@ -30,11 +30,11 @@
   )
 
   function customerAdded(newCustomer: Customer) {
-    customers = [...customers, newCustomer]
+    customers = [newCustomer, ...customers]
   }
 
   function resetCustomer() {
-    customer = {} as Customer; // 'as' works perfectly here
+    customer = {} as Customer;
   }
 </script>
 
@@ -42,12 +42,17 @@
   <div class="flex justify-end">
     <Button label={t.customers.addCustomer} onclick={() => {
       show = true;
+      title = t.customers.addCustomer;
       resetCustomer()
     }}/>
   </div>
   <SortableTable {columns} items={customers} let:item>
     <tr
-      onclick={() => {show = true; customer= item; title= t.customers.editCustomer }}
+      onclick={() => {
+        show = true;
+        customer= item;
+        title= t.customers.editCustomer
+      }}
       class="cursor-pointer"
     >
       <td>{item.name}</td>

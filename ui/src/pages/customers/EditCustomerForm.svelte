@@ -32,7 +32,7 @@
         <Button  icon={open ? 'chevron-up' : 'chevron-down'} onclick={() => open = !open}/>
       {/if}
     </div>
-    {#if open || customer.id}
+    {#if open || customer.name}
       <div transition:slide>
         <FormField required={false} label={t.customers.legalName} bind:value={customer.legalName}/>
         <FormField required={false} label={t.customers.businessRegistryCode} bind:value={customer.businessRegistryCode}/>
