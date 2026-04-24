@@ -22,6 +22,7 @@
     "customers": "Customers",
     "customer": "Customer",
     "addCustomer": "Add a Customer",
+    "editCustomer": "Edit customer",
     "name": "Customer name",
     "legalName": "Customer legal name",
     "businessRegistryCode": "Business registry code",
