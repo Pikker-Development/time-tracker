@@ -13,6 +13,10 @@ import project.ProjectRoutes
 class ProjectRoutesTest: BaseMocks() {
   val routes = create<ProjectRoutes>()
 
+  @Test fun get() {
+    expect(routes.get(project.id)).toEqual(project)
+  }
+
 @Test fun save() {
   val newProject = routes.save(project)
   expect(newProject).toEqual(project)

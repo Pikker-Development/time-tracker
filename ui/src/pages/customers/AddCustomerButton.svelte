@@ -12,12 +12,13 @@
 
   export let customer = {} as Customer
   export let show = false
-
   let open = false
+  export let onCreated: (customer: Customer) => void = () => {}
 
   async function submit() {
     await api.post('customers', customer)
     showToast(t.general.saved)
+    onCreated(customer)
     show = false
   }
 
