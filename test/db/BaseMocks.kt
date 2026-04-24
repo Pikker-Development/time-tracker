@@ -1,6 +1,7 @@
 package db
 
 import customers.CustomerRepository
+import db.TestData.project
 import db.TestData.user
 import io.mockk.clearAllMocks
 import io.mockk.every
@@ -13,6 +14,7 @@ import klite.StatusCodeException
 import project.ProjectRepository
 import users.UserRepository
 import java.net.URI
+import kotlin.collections.get
 
 abstract class BaseMocks {
   companion object {
@@ -44,6 +46,9 @@ abstract class BaseMocks {
     userRepository.apply {
       every { get(user.id) } returns user
       every { save(any()) } returns 1
+    }
+    projectRepository.apply {
+      every { get(project.id) } returns project
     }
   }
 }
