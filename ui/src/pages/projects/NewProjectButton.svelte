@@ -8,7 +8,6 @@
   import TextAreaField from 'src/forms/TextAreaField.svelte'
   import api from 'src/api/api'
   import {showToast} from 'src/stores/toasts'
-  import {navigate} from '@keksworks/svelte-tiny-router'
   import SelectField from 'src/forms/SelectField.svelte'
   import {onMount} from 'svelte'
 
@@ -16,12 +15,13 @@
   export let customers = {} as Customer
   export let label = t.projects.new
   export let show = false
+  export let onCreated: (project: Project) => void = () => {}
 
   async function submit() {
     project = await api.post('projects' + (project.id ? '/' + project.id : ''), project)
     showToast(t.general.saved)
+    onCreated(project)
     show = false
-    setTimeout(() => navigate(`/projects/${project.id}`), 500)
   }
 
   onMount(
