@@ -14,3 +14,6 @@ create trigger projects_history after update on projects for each row execute fu
 
 --changeset projects:createdAt
 alter table projects add column createdAt timestamptz not null default now();
+
+--changeset projects:unique_customer_project_name
+alter table projects add constraint projects_unique_customer_name unique (customerId, name);

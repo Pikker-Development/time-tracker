@@ -9,7 +9,8 @@
   },
   "errors": {
     "technical": "Technical error, please try again",
-    "tooLong": "Too long"
+    "tooLong": "Too long",
+    "alreadyExists": "Project already exists"
   },
   "contacts": {
     "email": "Email"
