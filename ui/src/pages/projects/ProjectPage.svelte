@@ -21,7 +21,7 @@ onMount(async () => {
 
 <MainPageLayout class="relative">
   {#if project}
-    <div class="flex justify-end"><NewProjectButton {project} label={t.projects.edit}/></div>
+    <div class="flex justify-end"><NewProjectButton {project} label={t.projects.edit} onCreated ={p => project = p}/></div>
 
     <h2 class="text-2xl font-bold mb-4">{project?.name}</h2>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

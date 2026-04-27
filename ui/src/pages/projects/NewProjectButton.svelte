@@ -18,7 +18,7 @@
   export let onCreated: (project: Project) => void = () => {}
 
   async function submit() {
-    project = await api.post('projects' + (project.id ? '/' + project.id : ''), project)
+    project = await api.post('projects', project)
     showToast(t.general.saved)
     onCreated(project)
     show = false
@@ -32,7 +32,7 @@
 <Button {label} onclick={() => show = true}/>
 <Modal bind:show title={label}>
   <Form {submit}>
-    <SelectField label={t.customers.customers} bind:value={project.customerId} options={Object.values(customers).map(c => [c.id, c.name]).toObject()}/>
+    <SelectField label={t.customers.customers} bind:value={project.customerId} options={Object.values(customers).map(c => [c.id, c.name]).toObject()} emptyOption=""/>
     <FormField label={t.projects.name} bind:value={project.name}/>
     <TextAreaField label={t.projects.description} bind:value={project.description} rows={3} required={false}/>
     <FormField label={t.projects.hourlyRate} bind:value={project.hourlyRate}/>
