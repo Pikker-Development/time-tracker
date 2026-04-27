@@ -22,7 +22,7 @@ onMount(async () => {
 </script>
 
 <MainPageLayout class="relative">
-  <NewProjectButton onCreated = {projectCreated}/>
+  <div class="flex justify-end"><NewProjectButton onCreated = {projectCreated}/></div>
   <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 my-3 text-lg">
     {#each projects ?? [] as p}
       <Link to="/projects/{p.id}" class=" py-3 bg-white hover:bg-stone-50">
