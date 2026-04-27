@@ -11,6 +11,7 @@ import klite.DependencyInjectingRegistry
 import klite.HttpExchange
 import klite.StatusCode.Companion.Found
 import klite.StatusCodeException
+import project.ProjectMemberRepository
 import project.ProjectRepository
 import users.UserRepository
 import java.net.URI
@@ -28,6 +29,7 @@ abstract class BaseMocks {
     val userRepository = mock<UserRepository>(relaxed = true)
     val customerRepository = mock<CustomerRepository>(relaxed = true)
     val projectRepository = mock<ProjectRepository>(relaxed = true)
+    val projectMemberRepository = mock<ProjectMemberRepository>(relaxed = true)
 
     inline fun <reified T: Any> create() = registry.create(T::class)
 

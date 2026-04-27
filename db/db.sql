@@ -6,3 +6,4 @@
 --include users.sql
 --include customers.sql
 --include projects.sql
+--include project_member.sql
