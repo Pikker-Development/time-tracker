@@ -18,9 +18,15 @@ class ProjectRoutes(
   @GET("/:id")
   fun get(@PathParam id: Id<Project>) = projectRepository.get(id)
 
-  @POST fun save(@AttrParam user: User, project: Project) : Project {
+  @POST fun create(@AttrParam user: User, project: Project) : Project {
     projectRepository.save(project)
     projectMemberRepository.save(ProjectMember(project.id, user.id))
+    return project
+  }
+
+  @POST("/:id")fun save(project: Project, @PathParam id: Id<Project>) :Project {
+    require(id == project.id) { "Wrong id" }
+    projectRepository.save(project)
     return project
   }
 

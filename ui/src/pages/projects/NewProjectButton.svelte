@@ -10,6 +10,7 @@
   import {showToast} from 'src/stores/toasts'
   import SelectField from 'src/forms/SelectField.svelte'
   import {onMount} from 'svelte'
+  import {navigate} from 'src/router'
 
   export let project = {} as Project
   export let customers = {} as Customer
@@ -18,9 +19,12 @@
   export let onCreated: (project: Project) => void = () => {}
 
   async function submit() {
-    project = await api.post('projects', project)
+    const isNew = !project.id
+    if (isNew) { project = await api.post('projects', project) }
+    else { project = await api.post(`projects/${project.id}`, project) }
     showToast(t.general.saved)
     onCreated(project)
+    setTimeout(() => navigate(`/projects/${project.id}`), 500)
     show = false
   }
 

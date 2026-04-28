@@ -10,10 +10,6 @@ import {Link} from 'src/router'
 let projects: Project[]
 let customerMap: Record<string, string> = {}
 
-function projectCreated(newProject: Project) {
-  projects = [...projects, newProject]
-}
-
 onMount(async () => {
   projects = await api.get('projects')
   const customerList: Customer[] = await api.get('customers')
@@ -22,7 +18,7 @@ onMount(async () => {
 </script>
 
 <MainPageLayout class="relative">
-  <div class="flex justify-end"><NewProjectButton onCreated = {projectCreated}/></div>
+  <div class="flex justify-end"><NewProjectButton/></div>
   <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 my-3 text-lg">
     {#each projects ?? [] as p}
       <Link to="/projects/{p.id}" class=" py-3 bg-white hover:bg-stone-50">

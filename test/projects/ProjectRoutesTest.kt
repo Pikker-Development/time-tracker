@@ -17,8 +17,8 @@ class ProjectRoutesTest: BaseMocks() {
     expect(routes.get(project.id)).toEqual(project)
   }
 
-  @Test fun save() {
-    val newProject = routes.save(user, project)
+  @Test fun create() {
+    val newProject = routes.create(user, project)
     expect(newProject).toEqual(project)
     verify {
       projectRepository.save(newProject)
@@ -26,6 +26,13 @@ class ProjectRoutesTest: BaseMocks() {
         it.projectId == project.id && it.userId == user.id
       })
     }
+  }
+
+  @Test fun save() {
+    val updatedProject = project.copy(name = "Updated name")
+    val newProject = routes.save(updatedProject, project.id)
+    expect(newProject).toEqual(updatedProject)
+    verify { projectRepository.save(updatedProject) }
   }
 
   @Test fun list() {
