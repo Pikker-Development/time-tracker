@@ -49,6 +49,7 @@ abstract class BaseMocks {
       every { get(user.id) } returns user
       every { save(any()) } returns 1
       every { userRepository.get(TestData.admin.id) } returns TestData.admin
+      every { list() } returns listOf(user)
 
     }
     projectRepository.apply {

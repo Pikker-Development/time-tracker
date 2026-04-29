@@ -43,5 +43,13 @@
     "storyTrackerId": "Story tracker id",
     "currency": "Currency",
     "edit": "Edit project"
+  },
+  "users": {
+    "users": "Users",
+    "name": "Name",
+    "firstName": "First name",
+    "lastName": "Last name",
+    "email": "Email",
+    "admin": "Admin"
   }
 }

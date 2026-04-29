@@ -12,6 +12,7 @@ import klite.oauth.GoogleOAuthClient
 import klite.oauth.OAuthRoutes
 import klite.oauth.OAuthUserProvider
 import project.ProjectRoutes
+import users.UserRoutes
 import java.nio.file.Path
 import kotlin.reflect.full.primaryConstructor
 import kotlin.time.Duration.Companion.days
@@ -58,6 +59,7 @@ fun main() {
 
       annotated<ProjectRoutes>("/projects")
       annotated<CustomerRoutes>("/customers")
+      annotated<UserRoutes>("/users")
       annotated<AuthRoutes>(annotations = listOf(Public()))
     }
     start()
