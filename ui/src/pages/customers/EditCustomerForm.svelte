@@ -12,6 +12,7 @@
   export let customer = {} as Customer
   export let show = false
   export let title = t.customers.addCustomer
+  export let edit = false
 
   let open = false
   export let onCreated: (customer: Customer) => void = () => {}
@@ -32,7 +33,7 @@
         <Button  icon={open ? 'chevron-up' : 'chevron-down'} onclick={() => open = !open}/>
       {/if}
     </div>
-    {#if open || customer.name}
+    {#if open || edit}
       <div transition:slide>
         <FormField required={false} label={t.customers.legalName} bind:value={customer.legalName}/>
         <FormField required={false} label={t.customers.businessRegistryCode} bind:value={customer.businessRegistryCode}/>

@@ -25,6 +25,7 @@
   let customer = {} as Customer
   let show = false
   let title = ''
+  let edit = false
 
   onMount(
     async () => customers = await api.get('customers')
@@ -44,7 +45,8 @@
     <Button label={t.customers.addCustomer} onclick={() => {
       show = true;
       title = t.customers.addCustomer;
-      resetCustomer()
+      resetCustomer();
+      edit = false
     }}/>
   </div>
   <SortableTable {columns} items={customers} let:item>
@@ -58,9 +60,9 @@
       <td>{item.phone}</td>
       <td>
         <Button label={t.projects.projects} onclick={() => navigate(`/customers/${item.id}/projects`)}/>
-        <Button label={t.general.edit} onclick={() => { customer = item; show = true; title = t.customers.editCustomer }}/>
+        <Button label={t.general.edit} onclick={() => { customer = item; show = true;edit = true; title = t.customers.editCustomer }}/>
       </td>
     </tr>
   </SortableTable>
-  <EditCustomerForm bind:show {customer} {title} onCreated={customerAdded}/>
+  <EditCustomerForm bind:show {customer} {title} {edit} onCreated={customerAdded}/>
 </MainPageLayout>
