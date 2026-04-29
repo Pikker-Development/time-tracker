@@ -32,7 +32,9 @@
   )
 
   function customerAdded(newCustomer: Customer) {
-    customers = [newCustomer, ...customers]
+    const existingCustomer = customers.find(c => c.id === newCustomer.id)
+    if(existingCustomer) { customers = customers.map(c => c.id === newCustomer.id ? newCustomer : c) }
+    else { customers = [newCustomer, ...customers] }
   }
 
   function resetCustomer() {
