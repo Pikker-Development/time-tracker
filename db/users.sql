@@ -15,3 +15,9 @@ alter table users add column updatedAt timestamptz not null default now();
 
 --changeset users:avatarUrl
 alter table users add column avatarUrl text default null;
+
+--changeset users:isAdmin
+alter table users add column isAdmin boolean not null default false;
+
+--changeset users:replace-role-with-isadmin
+alter table users drop column role;

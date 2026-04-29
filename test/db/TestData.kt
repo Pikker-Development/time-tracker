@@ -3,7 +3,6 @@ package db
 import customers.Customer
 import klite.Email
 import project.Project
-import users.Role.USER
 import users.User
 import java.time.LocalDate
 import java.time.ZoneOffset.UTC
@@ -13,7 +12,9 @@ object TestData {
   val date = LocalDate.of(2025, 3, 3)
   val now = date.atStartOfDay().toInstant(UTC)
 
-  val user = User("Test", "User", Email("test@test.ee"), USER, createdAt = now)
+  val admin = User("Admin", "Admin", Email("admin@test.ee"), isAdmin = true, createdAt = now)
+  val user = User("User", "User", Email("user@test.ee"), isAdmin = false, createdAt = now)
+
   val customer = Customer(Id(), "Customer1")
   val project = Project(Id(1), customer.id, "Project1", currency = "EUR", hourlyRate = 10.toBigDecimal())
 }

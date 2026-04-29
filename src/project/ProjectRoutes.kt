@@ -4,12 +4,11 @@ import auth.Access
 import db.Id
 import klite.annotations.AttrParam
 import klite.annotations.GET
-import users.Role.ADMIN
 import klite.annotations.POST
 import klite.annotations.PathParam
 import users.User
 
-@Access(ADMIN)
+@Access(isAdmin = true)
 class ProjectRoutes(
   val projectRepository: ProjectRepository,
   val projectMemberRepository: ProjectMemberRepository)
@@ -29,6 +28,8 @@ class ProjectRoutes(
     projectRepository.save(project)
     return project
   }
+
+  @GET fun list() = projectRepository.list()
 
   @GET fun list(@AttrParam user: User) =
   projectRepository.listForMember(user.id)

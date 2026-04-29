@@ -7,10 +7,10 @@ export interface Customer {businessRegistryCode?: string; id: Id<Customer>; invo
 export interface Project {currency: string; customerId: Id<Customer>; description?: string; hourlyRate: number; id: Id<Project>; name: string; storyTrackerId?: number}
 // class project.ProjectMember
 export interface ProjectMember {createdAt: Instant; id: Id<ProjectMember>; projectId: Id<Project>; role: Role; updatedAt?: Instant; userId: Id<User>}
-// class users.Role
-export enum Role {ADMIN = 'ADMIN', USER = 'USER'}
+// class project.Role
+export enum Role {DEVELOPER = 'DEVELOPER', ARCHITECT = 'ARCHITECT', INTERN = 'INTERN', CUSTOMER = 'CUSTOMER'}
 // class users.User
-export interface User {avatarUrl?: URI; createdAt: Instant; email: Email; firstName: string; id: Id<User>; lastName: string; role: Role; updatedAt?: Instant}
+export interface User {avatarUrl?: URI; createdAt: Instant; email: Email; firstName: string; id: Id<User>; isAdmin: boolean; lastName: string; updatedAt?: Instant}
 
 // java.time.Instant
 export type Instant = `${number}-${number}-${number}T${number}:${number}:${number}Z`

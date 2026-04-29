@@ -9,15 +9,12 @@ import klite.oauth.OAuthUser
 import java.net.URI
 import java.time.Instant
 
-enum class Role {
-  ADMIN, USER
-}
 
 data class User(
   override val firstName: String,
   override val lastName: String,
   override val email: Email,
-  val role: Role = Role.ADMIN,
+  val isAdmin: Boolean,
   val avatarUrl: URI? = null,
   val createdAt: Instant = nowSec(),
   override var updatedAt: Instant? = null,

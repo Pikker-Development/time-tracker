@@ -14,3 +14,6 @@ alter table project_members alter column projectId type bigint using projectId::
 
 --changeset project_members.userId:bigint
 alter table project_members alter column userId type bigint using userId::bigint;
+
+--changeset project_members:default-role-to-developer
+alter table project_members alter column role set default 'DEVELOPER';

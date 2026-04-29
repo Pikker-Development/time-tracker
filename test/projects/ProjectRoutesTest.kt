@@ -3,6 +3,7 @@ package projects
 import ch.tutteli.atrium.api.fluent.en_GB.toEqual
 import ch.tutteli.atrium.api.verbs.expect
 import db.BaseMocks
+import db.TestData.customer
 import db.TestData.project
 import db.TestData.user
 import io.mockk.every
@@ -38,6 +39,8 @@ class ProjectRoutesTest: BaseMocks() {
   @Test fun list() {
     val projects = listOf(project)
     every { projectRepository.listForMember(user.id) } returns projects
+    expect(routes.list()).toEqual(projects)
+    expect(routes.list(user)).toEqual(projects)
   }
 
 }

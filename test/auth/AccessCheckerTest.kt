@@ -1,6 +1,7 @@
 package auth
 
 import db.BaseMocks
+import db.TestData.admin
 import db.TestData.user
 import io.mockk.every
 import io.mockk.verify
@@ -8,8 +9,6 @@ import klite.ForbiddenException
 import kotlinx.coroutines.test.runTest
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
-import users.Role.ADMIN
-import users.Role.USER
 
 class AccessCheckerTest: BaseMocks() {
   val checker = create<AccessChecker>()
@@ -27,7 +26,7 @@ class AccessCheckerTest: BaseMocks() {
 
   @Test fun `access granted`() = runTest {
     every { exchange.session["userId"] } returns user.id.toString()
-    every { exchange.route.annotations } returns listOf(Access(user.role))
+    every { exchange.route.annotations } returns listOf(Access(user.isAdmin))
     checker.before(exchange)
     verify {
       exchange.attr("user", user)
@@ -37,22 +36,22 @@ class AccessCheckerTest: BaseMocks() {
 
   @Test fun `forbids access without matching role`() = runTest {
     every { exchange.session["userId"] } returns user.id.toString()
-    every { exchange.route.annotations } returns listOf(Access(ADMIN))
+    every { exchange.route.annotations } returns listOf(Access(isAdmin = true))
     assertThrows<ForbiddenException> { checker.before(exchange) }
     verify { exchange.attr("user", user) }
   }
 
   @Test fun `Access annotation overrides Public (eg on class)`() = runTest {
     every { exchange.session["userId"] } returns user.id.toString()
-    every { exchange.route.annotations } returns listOf(Public(), Access(ADMIN))
+    every { exchange.route.annotations } returns listOf(Public(), Access(isAdmin = true))
     assertThrows<ForbiddenException> { checker.before(exchange) }
   }
 
-  @Test fun `allows access for route with multiple roles`() = runTest {
-    every { exchange.session["userId"] } returns user.id.toString()
-    every { exchange.route.annotations } returns listOf(Access(ADMIN, USER))
+  @Test fun `allows admin access`() = runTest {
+    every { exchange.session["userId"] } returns admin.id.toString()
+    every { exchange.route.annotations } returns listOf(Access(isAdmin = true))
     checker.before(exchange)
-    verify { exchange.attr("user", user) }
+    verify { exchange.attr("user", admin) }
   }
 
   @Test fun `requires @Access annotation`() = runTest {
