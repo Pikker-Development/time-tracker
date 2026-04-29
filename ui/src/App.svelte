@@ -21,5 +21,6 @@
   <Route path="/customers" component={CustomersPage}/>
   <Route path="/projects" component={ProjectsPage}/>
   <Route path="/projects/:id" component={ProjectPage}/>
+  <Route path="/customers/:customerId/projects" component={ProjectsPage}/>
 </Router>
 

@@ -7,6 +7,7 @@
   import {t} from 'i18n'
   import EditCustomerForm from 'src/pages/customers/EditCustomerForm.svelte'
   import Button from 'src/components/Button.svelte'
+  import {navigate} from 'src/router'
 
 
   const columns: [string, any][] = [
@@ -16,9 +17,9 @@
     [t.customers.legalAddress, 'legalAddress'],
     [t.customers.vatId, 'vatId'],
     [t.customers.invoiceEmail, 'invoiceEmail'],
-    [t.customers.phone, 'phone']
+    [t.customers.phone, 'phone'],
+    ['', '']
   ]
-
 
   let customers: Customer[]
   let customer = {} as Customer
@@ -34,7 +35,7 @@
   }
 
   function resetCustomer() {
-    customer = {} as Customer;
+    customer = {} as Customer
   }
 </script>
 
@@ -47,14 +48,7 @@
     }}/>
   </div>
   <SortableTable {columns} items={customers} let:item>
-    <tr
-      onclick={() => {
-        show = true;
-        customer= item;
-        title= t.customers.editCustomer
-      }}
-      class="cursor-pointer"
-    >
+    <tr>
       <td>{item.name}</td>
       <td>{item.legalName}</td>
       <td>{item.businessRegistryCode}</td>
@@ -62,6 +56,10 @@
       <td>{item.vatId}</td>
       <td>{item.invoiceEmail}</td>
       <td>{item.phone}</td>
+      <td>
+        <Button label={t.projects.projects} onclick={() => navigate(`/customers/${item.id}/projects`)}/>
+        <Button label={t.general.edit} onclick={() => show = true}></Button>
+      </td>
     </tr>
   </SortableTable>
   <EditCustomerForm bind:show {customer} {title} onCreated={customerAdded}/>

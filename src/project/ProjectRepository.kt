@@ -1,5 +1,6 @@
 package project
 
+import customers.Customer
 import db.CrudRepository
 import db.Id
 import klite.jdbc.select
@@ -10,4 +11,7 @@ class ProjectRepository (db: DataSource): CrudRepository<Project>(db, "projects"
 
   fun listForMember(userId: Id<User>): List<Project> =
     db.select("$table join project_members m on $table.id = m.projectId", ProjectMember::userId to userId) { mapper() }
+
+  fun listForCustomerAndMember(customerId: Id<Customer>, userId: Id<User>): List<Project> =
+    db.select("$table join project_members m on $table.id = m.projectId", "customerId" to customerId, ProjectMember::userId to userId) { mapper() }
 }

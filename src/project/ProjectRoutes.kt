@@ -32,4 +32,5 @@ class ProjectRoutes(
 
   @GET fun list(@AttrParam user: User) =
   projectRepository.listForMember(user.id)
+
 }

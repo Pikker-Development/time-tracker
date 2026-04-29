@@ -5,7 +5,8 @@
     "optional": "Optional",
     "saved": "saved",
     "save": "save",
-    "noItems": "no items"
+    "noItems": "no items",
+    "edit": "edit"
   },
   "errors": {
     "technical": "Technical error, please try again",
@@ -34,6 +35,7 @@
     "phone": "Phone number"
   },
   "projects": {
+    "projects": "Projects",
     "new": "New project",
     "name": "Project Name",
     "description": "Description",

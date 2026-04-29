@@ -1,17 +1,23 @@
 <script lang="ts">
 import MainPageLayout from 'src/layout/MainPageLayout.svelte'
 import NewProjectButton from 'src/pages/projects/NewProjectButton.svelte'
-import type {Customer, Project} from 'src/api/types'
+import type {Customer, Id, Project} from 'src/api/types'
 import {onMount} from 'svelte'
 import api from 'src/api/api'
 import {t} from 'i18n'
 import {Link} from 'src/router'
 
-let projects: Project[]
+let projects: Project[] = []
 let customerMap: Record<string, string> = {}
+export let customerId: Id<Customer>
+
+async function getProjects(customerId: Id<Customer> | undefined = undefined) {
+  if (customerId) { projects = await api.get(`customers/${customerId}/projects`) }
+  else { projects = await api.get('projects') }
+}
 
 onMount(async () => {
-  projects = await api.get('projects')
+  await getProjects(customerId)
   const customerList: Customer[] = await api.get('customers')
   customerMap = Object.fromEntries(customerList.map(c => [c.id, c.name]))
 })
