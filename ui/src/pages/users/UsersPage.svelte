@@ -25,9 +25,7 @@
     <tr>
       <td>{item.firstName} {item.lastName}</td>
       <td>{item.email}</td>
-        {#if item.isAdmin}
-          <td>✓</td>
-        {/if}
+      <td>{#if item.isAdmin}✓{/if}</td>
     </tr>
   </SortableTable>
 </MainPageLayout>
