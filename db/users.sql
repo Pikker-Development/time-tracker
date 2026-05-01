@@ -16,4 +16,5 @@ alter table users add column updatedAt timestamptz not null default now();
 --changeset users:avatarUrl
 alter table users add column avatarUrl text default null;
 
-alter table users rename column role to authRole
+--changeset users:rename-role-to-authRole
+alter table users rename column role to authRole;
