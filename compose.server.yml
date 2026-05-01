@@ -9,6 +9,7 @@ services:
       - DB_PASS
       - DB_APP_PASS
       - INITIAL_ADMINS
+      - OWN_DOMAIN
       - GOOGLE_OAUTH_CLIENT_ID
       - GOOGLE_OAUTH_CLIENT_SECRET
     networks:

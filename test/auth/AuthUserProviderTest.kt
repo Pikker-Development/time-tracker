@@ -25,9 +25,7 @@ class AuthUserProviderTest: BaseMocks() {
 
   @Test fun `creates a new user`() {
     every { userRepository.by(User::email to user.email) } returns null
-
     val user = provider.provide(profile, tokenResponse, exchange) as User
-
     expect(user.email).toEqual(user.email)
     verify { userRepository.save(user) }
   }

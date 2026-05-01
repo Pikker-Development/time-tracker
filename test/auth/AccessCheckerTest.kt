@@ -9,6 +9,7 @@ import klite.ForbiddenException
 import kotlinx.coroutines.test.runTest
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
+import users.AuthRole.ADMIN
 
 class AccessCheckerTest: BaseMocks() {
   val checker = create<AccessChecker>()
@@ -26,7 +27,7 @@ class AccessCheckerTest: BaseMocks() {
 
   @Test fun `access granted`() = runTest {
     every { exchange.session["userId"] } returns user.id.toString()
-    every { exchange.route.annotations } returns listOf(Access(user.isAdmin))
+    every { exchange.route.annotations } returns listOf(Access(user.authRole))
     checker.before(exchange)
     verify {
       exchange.attr("user", user)
@@ -36,20 +37,20 @@ class AccessCheckerTest: BaseMocks() {
 
   @Test fun `forbids access without matching role`() = runTest {
     every { exchange.session["userId"] } returns user.id.toString()
-    every { exchange.route.annotations } returns listOf(Access(isAdmin = true))
+    every { exchange.route.annotations } returns listOf(Access(ADMIN))
     assertThrows<ForbiddenException> { checker.before(exchange) }
     verify { exchange.attr("user", user) }
   }
 
   @Test fun `Access annotation overrides Public (eg on class)`() = runTest {
     every { exchange.session["userId"] } returns user.id.toString()
-    every { exchange.route.annotations } returns listOf(Public(), Access(isAdmin = true))
+    every { exchange.route.annotations } returns listOf(Public(), Access(ADMIN))
     assertThrows<ForbiddenException> { checker.before(exchange) }
   }
 
   @Test fun `allows admin access`() = runTest {
     every { exchange.session["userId"] } returns admin.id.toString()
-    every { exchange.route.annotations } returns listOf(Access(isAdmin = true))
+    every { exchange.route.annotations } returns listOf(Access(admin.authRole))
     checker.before(exchange)
     verify { exchange.attr("user", admin) }
   }

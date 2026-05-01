@@ -6,6 +6,7 @@ import {onMount} from 'svelte'
 import api from 'src/api/api'
 import {t} from 'i18n'
 import {Link} from 'src/router'
+import {user} from 'src/stores/auth'
 
 let projects: Project[] = []
 let customerMap: Record<string, string> = {}

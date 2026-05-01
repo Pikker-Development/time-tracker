@@ -11,7 +11,7 @@
   const columns: [string, any][] = [
     [t.users.name, 'name'],
     [t.users.email, 'email'],
-    [t.users.admin, 'admin'],
+    [t.users.role, 'role'],
   ]
 
   onMount(
@@ -25,7 +25,7 @@
     <tr>
       <td>{item.firstName} {item.lastName}</td>
       <td>{item.email}</td>
-      <td>{#if item.isAdmin}✓{/if}</td>
+      <td>{item.authRole}</td>
     </tr>
   </SortableTable>
 </MainPageLayout>

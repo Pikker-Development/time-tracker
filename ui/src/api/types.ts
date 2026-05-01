@@ -9,8 +9,10 @@ export interface Project {currency: string; customerId: Id<Customer>; descriptio
 export interface ProjectMember {createdAt: Instant; id: Id<ProjectMember>; projectId: Id<Project>; role: Role; updatedAt?: Instant; userId: Id<User>}
 // class project.Role
 export enum Role {DEVELOPER = 'DEVELOPER', ARCHITECT = 'ARCHITECT', INTERN = 'INTERN', CUSTOMER = 'CUSTOMER'}
+// class users.AuthRole
+export enum AuthRole {ADMIN = 'ADMIN', USER = 'USER', EXTERNAl = 'EXTERNAl'}
 // class users.User
-export interface User {avatarUrl?: URI; createdAt: Instant; email: Email; firstName: string; id: Id<User>; isAdmin: boolean; lastName: string; updatedAt?: Instant}
+export interface User {authRole: AuthRole; avatarUrl?: URI; createdAt: Instant; email: Email; firstName: string; id: Id<User>; lastName: string; updatedAt?: Instant}
 
 // java.time.Instant
 export type Instant = `${number}-${number}-${number}T${number}:${number}:${number}Z`

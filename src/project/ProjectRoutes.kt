@@ -6,9 +6,10 @@ import klite.annotations.AttrParam
 import klite.annotations.GET
 import klite.annotations.POST
 import klite.annotations.PathParam
+import users.AuthRole.ADMIN
 import users.User
 
-@Access(isAdmin = true)
+@Access(ADMIN)
 class ProjectRoutes(
   val projectRepository: ProjectRepository,
   val projectMemberRepository: ProjectMemberRepository)

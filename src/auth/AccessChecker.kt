@@ -11,9 +11,10 @@ import kotlin.annotation.AnnotationTarget.CLASS
 import kotlin.annotation.AnnotationTarget.FUNCTION
 import kotlin.reflect.full.findAnnotation
 import kotlin.reflect.full.hasAnnotation
+import users.AuthRole
 
 @Target(FUNCTION, CLASS) annotation class Public
-@Target(FUNCTION, CLASS) annotation class Access(val isAdmin: Boolean)
+@Target(FUNCTION, CLASS) annotation class Access(vararg val authRoles: AuthRole)
 
 class AccessChecker(private val userRepository: UserRepository): Before {
   override suspend fun before(exchange: HttpExchange) {
@@ -25,8 +26,7 @@ class AccessChecker(private val userRepository: UserRepository): Before {
     if (user == null && !isPublic) throw ForbiddenException()
     if (user != null && !isPublic) {
       if (access == null) error("@Access annotation is required for non-@Public routes")
-      if (access.isAdmin && !user.isAdmin) throw ForbiddenException()
-    }
+      if (access.authRoles.none { it == user.authRole }) throw ForbiddenException()    }
     if (user != null) userRepository.setAppUser(user)
   }
 }

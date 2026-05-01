@@ -50,6 +50,6 @@
     "firstName": "First name",
     "lastName": "Last name",
     "email": "Email",
-    "admin": "Admin"
+    "role": "Role"
   }
 }
