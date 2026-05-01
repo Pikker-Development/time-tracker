@@ -30,6 +30,11 @@ class ProjectRoutes(
     return project
   }
 
+  @POST("/:id/members") fun save(@PathParam id: Id<Project>, userId: Id<User>) {
+    println(userId.toString())
+    projectMemberRepository.save(ProjectMember(id, userId))
+  }
+
   @GET fun list(@AttrParam user: User) =
     if (user.authRole == ADMIN) projectRepository.list()
     else projectRepository.listForMember(user.id)

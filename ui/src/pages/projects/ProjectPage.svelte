@@ -1,28 +1,40 @@
 <script lang="ts">
 
 import MainPageLayout from 'src/layout/MainPageLayout.svelte'
-import type {Customer, Id, Project} from 'src/api/types'
+import type {Customer, Id, Project, ProjectMemberUser, User} from 'src/api/types'
 import {onMount} from 'svelte'
 import api from 'src/api/api'
 import {t} from 'i18n'
 import NewProjectButton from 'src/pages/projects/NewProjectButton.svelte'
 
+import type {ProjectContext} from 'src/pages/projects/context'
+import ProjectMembersModal from 'src/pages/projects/ProjectMembersModal.svelte'
+
 export let id: Id<Project>
 
-let project: Project
+let project: ProjectContext | undefined
 let customerMap: Record<string, string> = {}
+let users: User[]
+
+
 
 onMount(async () => {
   project = await api.get('projects/' + id)
   const customerList: Customer[] = await api.get('customers')
   customerMap = Object.fromEntries(customerList.map(c => [c.id, c.name]))
+  api.get<ProjectMemberUser[]>(`projects/${id}/members`).then(r => {
+    project!.members = r.indexBy(m => m.user.id)
+  })
+  users = await api.get('users')
 })
 </script>
 
 <MainPageLayout class="relative">
   {#if project}
-    <div class="flex justify-end"><NewProjectButton {project} label={t.projects.edit} onCreated ={p => project = p}/></div>
-
+    <div class="flex justify-end">
+      <ProjectMembersModal {project} {users}/>
+      <NewProjectButton {project} label={t.projects.edit}/>
+    </div>
     <h2 class="text-2xl font-bold mb-4">{project?.name}</h2>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       <div>
