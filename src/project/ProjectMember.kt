@@ -23,3 +23,12 @@ data class ProjectMember(
   val createdAt: Instant = nowSec(),
   override val id: Id<ProjectMember> = Id(),
   ): Entity<ProjectMember>, UpdatableEntity
+
+
+data class ProjectMemberUser(
+  val member: ProjectMember,
+  val user: User
+) {
+  val id get() = member.id
+  val role get() = member.role
+}

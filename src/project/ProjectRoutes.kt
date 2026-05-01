@@ -33,4 +33,7 @@ class ProjectRoutes(
   @GET fun list(@AttrParam user: User) =
     if (user.authRole == ADMIN) projectRepository.list()
     else projectRepository.listForMember(user.id)
+
+  @GET("/:id/members") fun members(@PathParam id: Id<Project>): List<ProjectMemberUser> =
+    projectMemberRepository.list(id)
 }
