@@ -3,6 +3,7 @@ package projects
 import ch.tutteli.atrium.api.fluent.en_GB.toEqual
 import ch.tutteli.atrium.api.verbs.expect
 import db.BaseMocks
+import db.TestData.admin
 import db.TestData.customer
 import db.TestData.project
 import db.TestData.user
@@ -36,11 +37,15 @@ class ProjectRoutesTest: BaseMocks() {
     verify { projectRepository.save(updatedProject) }
   }
 
-  @Test fun list() {
+  @Test fun `list for member`() {
     val projects = listOf(project)
     every { projectRepository.listForMember(user.id) } returns projects
-    expect(routes.list()).toEqual(projects)
     expect(routes.list(user)).toEqual(projects)
   }
 
-}
+  @Test fun `list for admin`() {
+    val projects = listOf(project)
+    expect(routes.list(admin)).toEqual(projects)
+  }
+
+  }

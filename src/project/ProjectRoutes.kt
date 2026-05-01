@@ -30,9 +30,7 @@ class ProjectRoutes(
     return project
   }
 
-  @GET fun list() = projectRepository.list()
-
   @GET fun list(@AttrParam user: User) =
-  projectRepository.listForMember(user.id)
-
+    if (user.authRole == ADMIN) projectRepository.list()
+    else projectRepository.listForMember(user.id)
 }
