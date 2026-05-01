@@ -42,7 +42,9 @@
     "hourlyRate": "Hourly rate",
     "storyTrackerId": "Story tracker id",
     "currency": "Currency",
-    "edit": "Edit project"
+    "edit": "Edit project",
+    "addMember": "Add member",
+    "members": "Members"
   },
   "users": {
     "users": "Users",
