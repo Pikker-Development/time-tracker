@@ -7,6 +7,8 @@ export interface Customer {businessRegistryCode?: string; id: Id<Customer>; invo
 export interface Project {currency: string; customerId: Id<Customer>; description?: string; hourlyRate: number; id: Id<Project>; name: string; storyTrackerId?: number}
 // class project.ProjectMember
 export interface ProjectMember {createdAt: Instant; id: Id<ProjectMember>; projectId: Id<Project>; role: Role; updatedAt?: Instant; userId: Id<User>}
+// class project.ProjectMemberUser
+export interface ProjectMemberUser {id: Id<ProjectMember>; member: ProjectMember; role: Role; user: User}
 // class project.Role
 export enum Role {DEVELOPER = 'DEVELOPER', ARCHITECT = 'ARCHITECT', INTERN = 'INTERN', CUSTOMER = 'CUSTOMER'}
 // class users.AuthRole
