@@ -3,7 +3,7 @@ package users
 import auth.Access
 import klite.annotations.GET
 
-@Access(isAdmin = true)
+@Access(AuthRole.ADMIN)
 class UserRoutes(
   val userRepository: UserRepository
 ) {
