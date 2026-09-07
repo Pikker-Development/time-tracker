@@ -39,8 +39,9 @@ fun main() {
     use<JsonBody>()
     use<RequestTransactionHandler>()
 
-    val assetsPath = Path.of("../ui/build").takeIf(Path::exists) ?: Path.of("ui/build")
-    assets("/", AssetsHandler(assetsPath, useIndexForUnknownPaths = true))
+    val assetsPath = Path.of("ui/build")
+    val indexExists = assetsPath.resolve("index.html").exists()
+    assets("/", AssetsHandler(assetsPath, useIndexForUnknownPaths = indexExists))
 
     register(if (Config.isProd) SmtpEmailSender::class else FakeEmailSender::class)
 

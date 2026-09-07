@@ -16,7 +16,7 @@ class HomeAndNavigationTest : E2ETest() {
   fun anonymousHomeShowsLogin() {
     com.codeborne.selenide.Selenide.closeWebDriver()
     com.codeborne.selenide.Selenide.open("/")
-    element("body").shouldHave(text(t("home.intro")), text(t("login.google")))
+    element("body").shouldHave(text(t("home.intro")), text(t("login.login")))
   }
 
   @Test @Order(2)
