@@ -39,8 +39,8 @@
     "email": "Email"
   },
   "login": {
+    "login": "Login",
     "googleLogin": "Google login",
-    "google": "Google",
     "email": "Email",
     "sendCodeToEmail": "Send code to email",
     "codeSent": "Code sent to {email}, check your email and enter it below",

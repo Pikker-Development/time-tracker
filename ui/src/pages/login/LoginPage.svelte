@@ -27,7 +27,7 @@
   }
 </script>
 
-<MainPageLayout title={t.login.email}>
+<MainPageLayout>
   <Form {submit} class="w-full md:w-96 md:mt-10 mx-auto flex flex-col gap-4">
     {#if waitingForCode}
       <p>{replaceValues(t.login.codeSent, {email})}</p>

@@ -30,7 +30,7 @@
   </Dropdown>
 {:else}
   <a href="/oauth" class="link-button gap-2">
-    {t.login.google}
+    {t.login.login}
     <img src="/img/google.svg" class="size-4" title="Google Login" alt="">
     <button onclick={(e) => {e.preventDefault(); navigate('/login#' + location.pathname)}} title={t.login.email} class="border-l px-2 -my-2 -mr-2 flex items-center">
       <span class="text-lg mr-1">@ {t.login.email}</span>

@@ -39,8 +39,8 @@
     "email": "E-post"
   },
   "login": {
+    "login": "Logi sisse",
     "googleLogin": "Google sisselogimine",
-    "google": "Google",
     "email": "Email",
     "sendCodeToEmail": "Saada kood emailile",
     "codeSent": "Kood saadeti emailile {email}, vaata emaili ning sisesta sealne kood siia alla",
