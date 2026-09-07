@@ -9,10 +9,13 @@ import com.codeborne.selenide.WebDriverRunner
 import com.codeborne.selenide.junit5.TextReportExtension
 import klite.Config
 import klite.i18n.Lang
+import klite.max
 import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.extension.ExtendWith
 import users.AuthRole
+import java.io.File
+import java.lang.ProcessBuilder.Redirect.INHERIT
 import main as launchApplication
 
 @ExtendWith(TextReportExtension::class)
@@ -48,6 +51,7 @@ abstract class E2ETest {
       Configuration.browserSize = "1366x900"
       Configuration.timeout = 5000
       Configuration.headless = true
+      buildUiIfNeeded()
       launchApplication()
       repeat(30) {
         runCatching { java.net.URI(baseUrl).toURL().openConnection().apply { connectTimeout = 500 }.connect() }.onSuccess { return }
@@ -85,5 +89,26 @@ abstract class E2ETest {
     element(".validated :invalid").shouldNot(exist)
     waitForApiRequestsToFinish()
     element(".toast .text-danger-400").shouldNot(exist)
+  }
+}
+
+fun lastModified(vararg dirs: File): Long {
+  var newest = 0L
+  dirs.forEach { it.listFiles()?.forEach {
+    if (it.name.startsWith("types.ts")) return@forEach
+    newest = (if (it.isDirectory) lastModified(it) else it.lastModified()).max(newest)
+  }}
+  return newest
+}
+
+private fun buildUiIfNeeded() {
+  if (Config.optional("buildUI") == "false") return
+  val ui = File("ui")
+  val lastModified = lastModified(File(ui, "src"), File(ui, "i18n"))
+  val modifiedFile = File(ui, "build/modified.txt")
+  val savedModified = modifiedFile.takeIf { it.exists() }?.readText()?.toLong()
+  if (savedModified != lastModified) {
+    if (ProcessBuilder("npm", "run", "build").directory(ui).redirectErrorStream(true).redirectOutput(INHERIT).start().waitFor() != 0) error("Failed to build UI")
+    modifiedFile.writeText(lastModified.toString())
   }
 }
