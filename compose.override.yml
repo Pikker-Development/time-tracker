@@ -4,3 +4,7 @@ services:
       - ./db/init:/docker-entrypoint-initdb.d
     ports:
       - 127.0.0.1:5644:5432
+
+  app:
+    ports:
+      - 8080:8080

@@ -19,13 +19,13 @@ RUN adduser -S user
 RUN rm -fr /usr/sbin /bin/ch*
 
 WORKDIR /app
-COPY --from=build-ui /ui/build ui/public
+COPY --from=build-ui /ui/build ui/build
 COPY --from=build-server /app/build/libs ./
 
 ARG VERSION=dev
 ENV VERSION=$VERSION
-RUN echo "Setting built version to $VERSION" && sed -Ei "s/\\\$VERSION/$VERSION/" ui/public/index.html
-RUN gzip -k9 ui/public/assets/*
+RUN echo "Setting built version to $VERSION" && sed -Ei "s/\\\$VERSION/$VERSION/" ui/build/index.html
+RUN gzip -k9 ui/build/assets/*
 
 USER user
 

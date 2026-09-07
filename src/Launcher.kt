@@ -21,6 +21,7 @@ import projects.ProjectRoutes
 import timeentries.TimeEntryRoutes
 import users.UserRoutes
 import java.nio.file.Path
+import kotlin.io.path.exists
 import kotlin.reflect.full.primaryConstructor
 import kotlin.time.Duration.Companion.days
 
@@ -38,8 +39,8 @@ fun main() {
     use<JsonBody>()
     use<RequestTransactionHandler>()
 
-    val path = if (!Config.isProd) Path.of("ui/build") else Path.of("ui/public")
-    assets("/", AssetsHandler(path, useIndexForUnknownPaths = true))
+    val assetsPath = Path.of("../ui/build").takeIf(Path::exists) ?: Path.of("ui/build")
+    assets("/", AssetsHandler(assetsPath, useIndexForUnknownPaths = true))
 
     register(if (Config.isProd) SmtpEmailSender::class else FakeEmailSender::class)
 
