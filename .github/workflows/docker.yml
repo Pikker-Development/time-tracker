@@ -24,6 +24,16 @@ jobs:
           java-version: 25
           cache: gradle
 
+      - name: Set up Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          cache: 'npm'
+          cache-dependency-path: ui/package-lock.json
+
+      - name: Build UI
+        run: cd ui && npm ci && npm run build && npm run test:run
+
       - name: API tests
         run: ./gradlew test
 
