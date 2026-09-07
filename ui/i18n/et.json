@@ -8,6 +8,7 @@
   },
   "general": {
     "close": "Sulge",
+    "confirm": "Kinnita",
     "optional": "Valikuline",
     "saved": "Salvestatud",
     "save": "Salvesta",
@@ -39,7 +40,13 @@
   },
   "login": {
     "googleLogin": "Google sisselogimine",
-    "logout": "Logi välja"
+    "google": "Google",
+    "email": "Email",
+    "sendCodeToEmail": "Saada kood emailile",
+    "codeSent": "Kood saadeti emailile {email}, vaata emaili ning sisesta sealne kood siia alla",
+    "code": "Sisselogimise kood",
+    "logout": "Logi välja",
+    "noUser": "Kasutajat ei leitud"
   },
   "customers": {
     "title": "Kliendid",
@@ -183,6 +190,12 @@
       "name": "Artur Reiljan",
       "email": "artur@pikker.dev",
       "phone": "+372 53064406"
+    }
+  },
+  "emails": {
+    "loginCode": {
+      "subject": "Time Trackeri sisselogimiskood",
+      "bodyHtml": "Tere tulemast!\n\nSinu ühekordne Time Trackeri sisselogimiskood on <b>{code}</b>.\n\nKui sa ei tellinud seda koodi, eira seda kirja."
     }
   }
 }

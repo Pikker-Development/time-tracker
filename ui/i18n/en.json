@@ -8,6 +8,7 @@
   },
   "general": {
     "close": "Close",
+    "confirm": "Confirm",
     "optional": "Optional",
     "saved": "Saved",
     "save": "Save",
@@ -39,7 +40,13 @@
   },
   "login": {
     "googleLogin": "Google login",
-    "logout": "Logout"
+    "google": "Google",
+    "email": "Email",
+    "sendCodeToEmail": "Send code to email",
+    "codeSent": "Code sent to {email}, check your email and enter it below",
+    "code": "Login code",
+    "logout": "Logout",
+    "noUser": "User not found"
   },
   "customers": {
     "title": "Customers",
@@ -183,6 +190,12 @@
       "name": "Artur Reiljan",
       "email": "artur@pikker.dev",
       "phone": "+372 53064406"
+    }
+  },
+  "emails": {
+    "loginCode": {
+      "subject": "Time Tracker login code",
+      "bodyHtml": "Welcome!\n\nYour one-time Time Tracker login code is <b>{code}</b>.\n\nIf you didn't request this code, please ignore this message."
     }
   }
 }

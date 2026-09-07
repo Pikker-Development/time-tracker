@@ -18,6 +18,7 @@ dependencies {
   implementation(klite("jdbc"))
   implementation(klite("slf4j"))
   implementation(klite("oauth"))
+  implementation(klite("smtp"))
   implementation("org.postgresql:postgresql:42.7.13")
 
   testImplementation(klite("jdbc-test"))
@@ -26,7 +27,7 @@ dependencies {
   testRuntimeOnly("org.junit.platform:junit-platform-launcher:6.0.3")
   testImplementation("ch.tutteli.atrium:atrium-fluent:1.3.0-alpha-2")
   testImplementation("io.mockk:mockk:1.14.11")
-  testImplementation("com.codeborne:selenide:7.16.0")
+  testImplementation("com.codeborne:selenide:7.18.1")
 }
 
 java {

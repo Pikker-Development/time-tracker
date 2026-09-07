@@ -58,3 +58,26 @@ export function toISODate(date: Date | string, transform?: (d: Date) => void) {
 }
 
 export const today = toISODate(new Date())
+
+export type Values = {
+  [name: string]: any;
+};
+
+export function replaceValues(text: string, values: Values) {
+  return text.replace(/\{(.*?)}/g, (_, placeholder) => replacePlaceholder(placeholder, values));
+}
+
+function replacePlaceholder(text: string, values: Values) {
+  const pluralTokens = text.split('|');
+  const field = pluralTokens[0];
+  if (pluralTokens.length == 1)
+    return values[field] ?? field;
+  const key = new Intl.PluralRules(lang).select(values[field]);
+  const zeroKey = values[field] === 0 ? 'zero' : '';
+  for (let i = 1; i < pluralTokens.length; i++) {
+    const [candidateKey, candidateText] = pluralTokens[i].split(':', 2);
+    if (candidateKey === key || candidateKey == zeroKey)
+      return candidateText.replace('#', values[field]);
+  }
+  return field;
+}

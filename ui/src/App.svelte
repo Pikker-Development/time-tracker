@@ -14,6 +14,7 @@
   import InvoicesPage from 'src/pages/invoices/InvoicesPage.svelte'
   import {activePath, navigate, Route, Router} from '@keksworks/svelte-tiny-router'
   import InvoicePage from 'src/pages/invoices/invoice/InvoicePage.svelte'
+  import LoginPage from 'src/pages/login/LoginPage.svelte'
 
   onMount(() => {
     if ($user && location.pathname == '/')
@@ -38,6 +39,7 @@
   {/if}
   <Router>
     <Route path="/" component={HomePage}/>
+    <Route path="/login" component={LoginPage}/>
     <Route path="/entry" component={TimeEntryPage}/>
     <Route path="/customers" component={CustomersPage}/>
     <Route path="/projects" component={ProjectsPage}/>

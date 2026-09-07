@@ -1,5 +1,6 @@
 import auth.AccessChecker
 import auth.AuthUserProvider
+import auth.EmailAuthRoutes
 import auth.Public
 import customers.CustomerRoutes
 import db.initDB
@@ -14,6 +15,8 @@ import klite.oauth.AuthRoutes
 import klite.oauth.GoogleOAuthClient
 import klite.oauth.OAuthRoutes
 import klite.oauth.OAuthUserProvider
+import klite.smtp.FakeEmailSender
+import klite.smtp.SmtpEmailSender
 import projects.ProjectRoutes
 import timeentries.TimeEntryRoutes
 import users.UserRoutes
@@ -38,6 +41,8 @@ fun main() {
     val path = if (!Config.isProd) Path.of("ui/build") else Path.of("ui/public")
     assets("/", AssetsHandler(path, useIndexForUnknownPaths = true))
 
+    register(if (Config.isProd) SmtpEmailSender::class else FakeEmailSender::class)
+
     context("/oauth") {
       register<OAuthUserProvider>(AuthUserProvider::class)
       register<GoogleOAuthClient>()
@@ -55,6 +60,7 @@ fun main() {
       annotated<UserRoutes>("/users")
       annotated<InvoiceRoutes>("/invoices")
       annotated<AuthRoutes>(annotations = listOf(Public()))
+      annotated<EmailAuthRoutes>("/auth", listOf(Public()))
       if (Config.optional("E2E_AUTH") == "true") annotated<E2eAuthRoutes>("/e2e/login")
     }
     start()
